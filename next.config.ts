@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: [
+      'sdmntprwestus3.oaiusercontent.com',
+      'via.placeholder.com',
+      'imgs.search.brave.com',
+    ],
+  },
 };
 
 export default nextConfig;
