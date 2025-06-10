@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Navbar() {
   const router = useRouter();
   return (
-    <nav className="bg-red-750 text-white px-6 py-3 flex justify-between items-center w-full h-16">
+    <nav className="bg-red-800 text-white px-6 py-3 flex justify-between items-center w-full h-16">
       <div className="">
         <Image src="https://res.cloudinary.com/dxjna0dxi/image/upload/v1749535225/cbbbb2b1-de26-4ff0-aa0c-d6ea7fc6b73e_xx41kh.png" alt="Logo" width={60} height={60} 
          onClick={()=>router.push("/dashboard")} className="cursor-pointer px-1 py-6"/>
