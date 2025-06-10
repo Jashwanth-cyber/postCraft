@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Navbar from "../components/Navbar";
 
 export default function MyPosts() {
   const [posts, setPosts] = useState<any[]>([]);
@@ -22,12 +23,16 @@ export default function MyPosts() {
   }, []);
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this post?")) return;
-    const res = await fetch(`/api/myPosts/${id}`, { method: "DELETE" });
-    if (res.ok) {
-      setPosts(posts.filter((post) => post.id !== id));
-    }
-  };
+  if (!confirm("Are you sure you want to delete this post?")) return;
+  const res = await fetch("/api/myPosts", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id }),
+  });
+  if (res.ok) {
+    setPosts(posts.filter((post) => post.id !== id));
+  }
+};
 
   const handleEdit = (id: string) => {
     router.push(`/editPost/${id}`);
@@ -42,10 +47,17 @@ export default function MyPosts() {
   }
 
   if (!posts.length) {
-    return <div className="text-center mt-8">No posts found.</div>;
+    return (
+        <>
+        <Navbar />
+      <div className="text-center mt-8">No posts found.</div>
+      </>
+    );
   }
 
   return (
+    <>
+     <Navbar/>
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">My Posts</h1>
       <div className="grid gap-4">
@@ -75,5 +87,6 @@ export default function MyPosts() {
         ))}
       </div>
     </div>
+    </>
   );
 }

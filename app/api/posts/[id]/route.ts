@@ -1,34 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../../lib/auth";
+import { authOptions } from "@/lib/auth"; 
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function GET(req: NextRequest) {
-  const session = await getServerSession(authOptions);
 
-  if (!session || !session.user?.email) {
-    return NextResponse.json([], { status: 200 });
-  }
+export async function GET(
+  req: NextRequest,
+  context: { params: { id: string } }
+) {
+  const { id } = context.params;
 
-  const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
+  const post = await prisma.post.findUnique({
+    where: { id },
   });
 
-  if (!user) {
-    return NextResponse.json([], { status: 200 });
+  if (!post) {
+    return NextResponse.json({ error: "Post not found" }, { status: 404 });
   }
 
-  const posts = await prisma.post.findMany({
-    where: { authorId: user.id },
-    orderBy: { createdAt: "desc" },
-  });
-
-  return NextResponse.json(posts);
+  return NextResponse.json(post);
 }
 
-export async function DELETE(req: NextRequest) {
+
+export async function PUT(
+  req: NextRequest,
+  context: { params: { id: string } }
+) {
   const session = await getServerSession(authOptions);
 
   if (!session || !session.user?.email) {
@@ -43,7 +42,8 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
-  const { id } = await req.json();
+  const { title, imageUrl, description, hashtags } = await req.json();
+  const { id } = context.params;
 
   const post = await prisma.post.findUnique({
     where: { id },
@@ -53,9 +53,10 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: "Not allowed" }, { status: 403 });
   }
 
-  await prisma.post.delete({
+  const updatedPost = await prisma.post.update({
     where: { id },
+    data: { title, imageUrl, description, hashtags },
   });
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json(updatedPost);
 }

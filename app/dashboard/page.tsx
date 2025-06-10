@@ -52,7 +52,7 @@ export default function Dashboard() {
   return (
     <div>
       <Navbar />
-      <div className="p-6 flex flex-col gap-6">
+      <div className="p-6 md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
           <div key={post.id} className="bg-white border rounded-xl shadow-sm p-5">
             <div className="flex items-center gap-3 mb-2">
