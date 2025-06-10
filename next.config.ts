@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       'sdmntprwestus3.oaiusercontent.com',
       'via.placeholder.com',
       'imgs.search.brave.com',
+      'res.cloudinary.com'
     ],
   },
 };

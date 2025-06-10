@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Navbar from "../components/Navbar";
+import Image from "next/image";
 
 interface Post {
   id: string;
@@ -66,7 +67,9 @@ export default function Dashboard() {
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">{post.title}</h3>
             {post.imageUrl && (
-              <img
+              <Image
+                width={400}
+                height={300}
                 src={post.imageUrl}
                 alt={post.title}
                 className="w-full max-h-[300px] object-cover rounded-md mb-3"

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../components/Navbar";
+import Image from "next/image";
 
 export default function CreatePost() {
   const [title, setTitle] = useState("");
@@ -61,7 +62,9 @@ export default function CreatePost() {
               required
             />
             {imageUrl && (
-              <img
+              <Image
+                width={300}
+                height={200}
                 src={imageUrl}
                 alt="Preview"
                 className="mt-3 rounded-md max-h-48 object-cover border"

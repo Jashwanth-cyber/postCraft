@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Navbar from "../components/Navbar";
+import { Post } from "@prisma/client"; 
 
 export default function MyPosts() {
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
