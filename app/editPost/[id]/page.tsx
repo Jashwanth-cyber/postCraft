@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 
+
 export default function EditPostPage() {
   const { id } = useParams();
   const router = useRouter();

@@ -6,7 +6,7 @@ export default function Home() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full bg-white flex flex-col items-center rounded-lg md:shadow-lg border-t-8 border-red-800 p-8 ">
         <Image
-          src="https://sdmntprwestus3.oaiusercontent.com/files/00000000-a3c4-61fd-a198-fd2f353e92d8/raw?se=2025-06-09T05%3A14%3A46Z&sp=r&sv=2024-08-04&sr=b&scid=3911cc58-361d-5232-ae92-d155db26b6a2&skoid=864daabb-d06a-46b3-a747-d35075313a83&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-08T23%3A01%3A56Z&ske=2025-06-09T23%3A01%3A56Z&sks=b&skv=2024-08-04&sig=Jruh9e7eUHgXIrYn%2BfYiZEJEs521a0J7XkZRQaWNlTs%3D"
+          src="https://res.cloudinary.com/dxjna0dxi/image/upload/v1749535225/cbbbb2b1-de26-4ff0-aa0c-d6ea7fc6b73e_xx41kh.png"
           alt="Welcome Image"
           width={320}
           height={192}
