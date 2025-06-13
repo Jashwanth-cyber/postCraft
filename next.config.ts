@@ -11,7 +11,8 @@ const nextConfig: NextConfig = {
       'encrypted-tbn0.gstatic.com', 
       'tse1.mm.bing.net',          
       'brave.com',                
-      'cdn.bfldr.com',       
+      'cdn.bfldr.com',
+      'thispersondoesnotexist.com'       
     ],
   },
 };
